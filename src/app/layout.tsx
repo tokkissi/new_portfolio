@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
+import NavigationBar from "@/components/NavigationBar";
 
 const notoSans = Noto_Sans_KR({ subsets: ["latin"] });
 
@@ -17,7 +18,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={notoSans.className}>{children}</body>
+      <body className={`${notoSans.className} bg-black text-white`}>
+        <NavigationBar />
+        {children}
+      </body>
     </html>
   );
 }
