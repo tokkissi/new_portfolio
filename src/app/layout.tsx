@@ -18,7 +18,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${notoSans.className} bg-black text-white`}>
+      <body
+        className={`${notoSans.className} bg-black text-white w-full max-w-[120rem] min-h-full mx-auto`}
+      >
         <NavigationBar />
         {children}
       </body>

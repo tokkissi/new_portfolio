@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function NavigationBar() {
   return (
-    <nav className="flex px-8 text-xl justify-between items-center fixed bg-black top-0 z-50 h-12 w-full ">
+    <nav className="flex px-8 text-xl justify-between items-center fixed bg-black top-0 max-w-7xl z-50 h-12 w-full ">
       {/* 좌측 로고 */}
       <div>
         <a href="/">
