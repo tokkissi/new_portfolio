@@ -1,0 +1,58 @@
+@keyframes fall {
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.fallingTextContainer {
+  text-shadow: 0.2rem 0.2rem grey;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  font-size: 10rem;
+  font-weight: 800;
+  text-wrap: nowrap;
+}
+
+.fallingTextContainer span {
+  display: inline-block;
+  position: relative;
+  transform: translateY(-100vh);
+  animation: fall 3.5s forwards;
+}
+
+.fallingTextContainer span:nth-child(2) {
+  animation-delay: 0.03s;
+}
+.fallingTextContainer span:nth-child(3) {
+  animation-delay: 0.07s;
+}
+.fallingTextContainer span:nth-child(4) {
+  animation-delay: 0.13s;
+}
+.fallingTextContainer span:nth-child(5) {
+  animation-delay: 0.2s;
+}
+
+/* 6번째 글자는 공백이므로 애니메이션 불필요함 */
+
+.fallingTextContainer span:nth-child(7) {
+  animation-delay: 0.32s;
+}
+.fallingTextContainer span:nth-child(8) {
+  animation-delay: 0.4s;
+}
+.fallingTextContainer span:nth-child(9) {
+  animation-delay: 0.51s;
+}
+.fallingTextContainer span:nth-child(10) {
+  animation-delay: 0.65s;
+}
+.fallingTextContainer span:nth-child(11) {
+  animation-delay: 0.8s;
+}
+.fallingTextContainer span:nth-child(12) {
+  animation-delay: 0.95s;
+}

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import FallingText from "./FallingText/FallingText";
 
 export default function Landing() {
   return (
@@ -14,6 +15,8 @@ export default function Landing() {
           fill
         />
       </div>
+
+      <FallingText />
 
       <div className="absolute top-0 w-full bg-gradient-to-b from-black to-transparent h-1/2"></div>
       <div className="absolute bottom-0 w-full bg-gradient-to-t from-black to-transparent h-1/2"></div>
