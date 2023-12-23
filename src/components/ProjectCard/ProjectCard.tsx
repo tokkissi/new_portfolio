@@ -2,6 +2,7 @@ import { splitStringIntoArray } from "@/utils/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
+import ProjectLinkBox from "../ProjectLinkBox";
 
 type ProjectCardProps = {
   imageUrl: string;
@@ -55,40 +56,10 @@ export default function ProjectCard({
               </span>
             ))}
           </div>
-          <div className="w-full flex gap-40 h-full items-end">
-            {githubCodeUrl && (
-              <Link
-                className="flex gap-6 items-center mt-10"
-                href={githubCodeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src="/skillIcons/Github-Light.svg"
-                  alt="프로젝트 깃허브 링크"
-                  width={48}
-                  height={48}
-                />
-                <span className="text-2xl font-bold">Code</span>
-              </Link>
-            )}
-            {deploymentUrl && (
-              <Link
-                className="flex gap-6 items-center"
-                href={deploymentUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src="/external-link.svg"
-                  alt="프로젝트 배포 url 링크"
-                  width={48}
-                  height={48}
-                />
-                <span className="text-2xl font-bold">Visit</span>
-              </Link>
-            )}
-          </div>
+          <ProjectLinkBox
+            deploymentUrl={deploymentUrl}
+            githubCodeUrl={githubCodeUrl}
+          />
         </div>
       </div>
     </div>

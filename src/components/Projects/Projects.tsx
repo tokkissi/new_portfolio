@@ -1,5 +1,7 @@
+import Carousel from "../Carousel";
+import PersonalProjectCard from "../PersonalProjectCard";
 import ProjectCard from "../ProjectCard/ProjectCard";
-import { mainProjectsData } from "./projectsData";
+import { mainProjectsData, personalSideProjectsData } from "./projectsData";
 
 export default function Projects() {
   return (
@@ -19,6 +21,22 @@ export default function Projects() {
           reverse={index % 2 !== 0}
         />
       ))}
+
+      <p className="mt-8 text-3xl font-bold ml-32">Toy Projects</p>
+      <Carousel>
+        {personalSideProjectsData.map((project, index) => (
+          <PersonalProjectCard
+            key={index}
+            projectName={project.projectName}
+            imageUrl={project.imageUrl}
+            description={project.description}
+            githubCodeUrl={project.githubCodeUrl}
+            myWork={project.myWork}
+            techs={project.techs}
+            deploymentUrl={project.deploymentUrl}
+          />
+        ))}
+      </Carousel>
     </section>
   );
 }

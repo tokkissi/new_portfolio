@@ -46,15 +46,15 @@ export const personalSideProjectsData: ProjectsData[] = [
   {
     projectName: "Next-Chat",
     imageUrl: "/projectImages/웹소켓채팅.png",
-    description: "개인 프로젝트. 웹소켓 기반의 실시간 채팅 웹 앱",
-    techs: "Next.js 14, TypeScript, Tailwind CSS, WebSocket, PWA",
+    description: "웹소켓 기반의 실시간 채팅 웹 앱",
+    techs: "Next.js 14, TypeScript, Tailwind CSS, Socket.io, PWA",
     githubCodeUrl: "https://github.com/tokkissi/Next-Chat",
     deploymentUrl: "https://next-chat-tokkissi.koyeb.app",
     myWork: "",
   },
   {
     projectName: "(구)2023년 포트폴리오",
-    imageUrl: "/projectImages/포트폴리오.png",
+    imageUrl: "/projectImages/구_포트폴리오.png",
     description: "이전 버전의 2023년 포트폴리오 웹사이트",
     techs: "Next.js 13, TypeScript, Tailwind CSS",
     githubCodeUrl: "https://github.com/tokkissi/portfolio_2023",
@@ -112,7 +112,7 @@ export const personalSideProjectsData: ProjectsData[] = [
     imageUrl: "/projectImages/영화_페이지.png",
     description:
       "TMDB(영화평가 사이트) api를 사용하여 Next.js 13 페이지 만들어보기",
-    techs: "githubCodeUrlt.js 13",
+    techs: "Next.js 13",
     githubCodeUrl: "",
     deploymentUrl: "",
     myWork: "",
