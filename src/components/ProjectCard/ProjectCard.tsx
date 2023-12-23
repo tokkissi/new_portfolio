@@ -17,6 +17,7 @@ export default function ProjectCard({
   githubCodeUrl,
   deploymentUrl,
   reverse,
+  myWork,
 }: ProjectCardProps) {
   // useMemo를 사용해서 techArray 계산을 최적화함
   const techArray = useMemo(() => splitStringIntoArray(techs), [techs]);
@@ -41,6 +42,7 @@ export default function ProjectCard({
         <div className="h-1/2">
           <h3 className="text-4xl font-extrabold mb-8">{projectName}</h3>
           <p className="text-2xl">{description}</p>
+          <p className="text-lg mt-4 opacity-75">My work: {myWork}</p>
         </div>
         <div className="h-1/2 flex flex-col">
           <div className="h-1/6"></div>

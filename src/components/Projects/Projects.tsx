@@ -19,6 +19,7 @@ export default function Projects() {
           githubCodeUrl={project.githubCodeUrl}
           deploymentUrl={project.deploymentUrl}
           reverse={index % 2 !== 0}
+          myWork={project.myWork}
         />
       ))}
 
