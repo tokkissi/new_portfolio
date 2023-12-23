@@ -2,16 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import ProjectLinkBox from "./ProjectLinkBox";
-
-type PersonalProjectCardProps = {
-  imageUrl: string;
-  projectName: string;
-  techs: string;
-  description: string;
-  deploymentUrl: string;
-  githubCodeUrl: string;
-  myWork: string;
-};
+import { ProjectsData } from "@/model/project";
 
 export default function PersonalProjectCard({
   projectName,
@@ -21,7 +12,7 @@ export default function PersonalProjectCard({
   deploymentUrl,
   myWork,
   techs,
-}: PersonalProjectCardProps) {
+}: ProjectsData) {
   return (
     <div className="relative flex items-center justify-center overflow-hidden">
       <div className="group h-full w-[30rem] relative transition-shadow hover:shadow-xl hover:shadow-black/30 rounded-md cursor-pointer">

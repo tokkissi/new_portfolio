@@ -3,14 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
 import ProjectLinkBox from "../ProjectLinkBox";
+import { ProjectsData } from "@/model/project";
 
-type ProjectCardProps = {
-  imageUrl: string;
-  projectName: string;
-  techs: string;
-  description: string;
-  deploymentUrl?: string;
-  githubCodeUrl?: string;
+type ProjectCardProps = ProjectsData & {
   reverse: boolean;
 };
 
