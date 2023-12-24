@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import ProjectLinkBox from "./ProjectLinkBox";
-import { ProjectsData } from "@/model/project";
+import { ProjectsData } from "@/model/types";
 
 export default function PersonalProjectCard({
   projectName,

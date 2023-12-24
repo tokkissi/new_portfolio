@@ -1,4 +1,4 @@
-import { ProjectsData } from "@/model/project";
+import { ProjectsData } from "@/model/types";
 
 export const mainProjectsData: ProjectsData[] = [
   {

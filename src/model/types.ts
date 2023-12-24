@@ -7,3 +7,11 @@ export type ProjectsData = {
   githubCodeUrl: string;
   myWork: string;
 };
+
+export type SkillData = {
+  image: string;
+  alt: string;
+  category: "lang" | "etc" | "framework";
+  skillName: string;
+  description: string;
+};

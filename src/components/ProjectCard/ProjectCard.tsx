@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
 import ProjectLinkBox from "../ProjectLinkBox";
-import { ProjectsData } from "@/model/project";
+import { ProjectsData } from "@/model/types";
 
 type ProjectCardProps = ProjectsData & {
   reverse: boolean;
