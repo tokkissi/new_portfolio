@@ -18,6 +18,12 @@ export default function SkillCardSlider({
 
   const { setSelectedSkill } = useZustandStore();
 
+  const extendedSkillDataList = [
+    ...skillDataList,
+    ...skillDataList,
+    ...skillDataList,
+  ];
+
   const handleMouseEnter = () => {
     if (carouselRef.current) {
       carouselRef.current.style.animationPlayState = "paused";
@@ -39,14 +45,16 @@ export default function SkillCardSlider({
       // Array.from(carouselRef.current.children)는 이 컨테이너 내의 모든 자식 요소들(이미지들)을 배열로 변환함
       // .reduce((total, child) => total + child.getBoundingClientRect().width, 0)는 이 배열의 각 요소(이미지)에 대해 getBoundingClientRect().width를 호출하여 그 너비를 합함
 
-      if (loadedImageCount.current === skillDataList.length * 2) {
+      if (loadedImageCount.current === skillDataList.length * 3) {
         const totalWidth = Array.from(carouselRef.current.children).reduce(
           (total, child) => total + child.getBoundingClientRect().width,
           0
         );
 
-        // 자연스럽게 순환하며 무한 재생하기 위해서 이미지 배열을 2배로 한 후 절반에서 시작하도록 했음. 현재 이미지 크기로는 2배로 했을때 순환시키면 화면의 가로 크기가 가득 차기 때문임
-        const translateValue = `-${totalWidth / 2}px`;
+        // 자연스럽게 순환하며 무한 재생하기 위해서 이미지 배열을 n배로 한 후 1/n에서 시작하도록 했음.
+        // 현재 이미지 크기로는 3배 이상이어야 구현 최대 가로 크기가 가득 차기 때문에 1/3을 이동거리로 갖게 함
+
+        const translateValue = `-${totalWidth / 3}px`;
 
         // 컨테이너 너비 계산 후, css 변수로 설정함
         carouselRef.current.style.setProperty(
@@ -70,29 +78,14 @@ export default function SkillCardSlider({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {skillDataList.map((skillData, index) => (
+      {extendedSkillDataList.map((skillData, index) => (
         <Image
           key={index}
           className="rounded-3xl px-2 hover:cursor-pointer hover:opacity-50"
           src={skillData.image}
           alt={skillData.skillName}
-          width={150}
-          height={150}
-          onLoad={handleImageLoad}
-          onClick={() => handleImageClick(skillData)}
-        />
-      ))}
-
-      {/* 무한 순환을 위한 추가 데이터 */}
-      {skillDataList.map((skillData, index) => (
-        <Image
-          // key가 겹치면 슬라이더가 정상 작동하지 않기 때문에 겹치지 않도록 함
-          key={index + skillDataList.length}
-          className="rounded-3xl px-2 hover:cursor-pointer hover:opacity-50"
-          src={skillData.image}
-          alt={skillData.skillName}
-          width={150}
-          height={150}
+          width={100}
+          height={100}
           onLoad={handleImageLoad}
           onClick={() => handleImageClick(skillData)}
         />
