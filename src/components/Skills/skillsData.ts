@@ -108,7 +108,7 @@ export const skillDataList: SkillData[] = [
     description: "인공지능 챗봇 및 이미지 생성 기능을 구현 가능합니다",
   },
   {
-    image: "/skillIcons/Socket-io.jpg",
+    image: "/skillIcons/socket.jpg",
     alt: "Socket.io, 클릭하여 기술 상세 보기",
     category: "etc",
     skillName: "Socket.io",
