@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import NavigationBar from "@/components/NavigationBar";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const notoSans = Noto_Sans_KR({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
       >
         <NavigationBar />
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
