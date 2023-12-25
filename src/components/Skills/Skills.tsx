@@ -1,5 +1,5 @@
-import TiltableSkillCard from "../TiltableSkillCard.tsx/TiltableSkillCard";
-import SkillCardSlider from "../SkillCardSlider.tsx/SkillCardSlider";
+import TiltableSkillCard from "../TiltableSkillCard/TiltableSkillCard";
+import SkillCardSlider from "../SkillCardSlider/SkillCardSlider";
 
 export default function Skills() {
   return (
