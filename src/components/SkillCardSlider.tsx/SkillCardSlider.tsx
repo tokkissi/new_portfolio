@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { skillDataList } from "../Skills/skillsData";
+import { useZustandStore } from "@/zustand/useZustandStore";
+import { SkillData } from "@/model/types";
 
 type SkillCardSliderProps = {
   reverse?: boolean;
@@ -13,6 +15,8 @@ export default function SkillCardSlider({
 }: SkillCardSliderProps) {
   const carouselRef = useRef<HTMLDivElement>(null);
   const loadedImageCount = useRef(0);
+
+  const { setSelectedSkill } = useZustandStore();
 
   const handleMouseEnter = () => {
     if (carouselRef.current) {
@@ -53,42 +57,46 @@ export default function SkillCardSlider({
     }
   };
 
-  return (
-    <div className="py-2">
-      {/* hover시 일시 정지를 위해 skill-cardSlider를 global.css에 정의함 */}
-      <div
-        ref={carouselRef}
-        className={`flex ${
-          reverse ? "animate-reverseSkillCardSlide" : "animate-skillCardSlide"
-        }`}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        {skillDataList.map((skillData, index) => (
-          <Image
-            key={index}
-            className="rounded-3xl px-2"
-            src={skillData.image}
-            alt={skillData.skillName}
-            width={150}
-            height={150}
-            onLoad={handleImageLoad}
-          />
-        ))}
+  const handleImageClick = (data: SkillData) => {
+    setSelectedSkill(data);
+  };
 
-        {/* 무한 순환을 위한 추가 데이터 */}
-        {skillDataList.map((skillData, index) => (
-          <Image
-            key={index + skillDataList.length}
-            className="rounded-3xl px-2"
-            src={skillData.image}
-            alt={skillData.skillName}
-            width={150}
-            height={150}
-            onLoad={handleImageLoad}
-          />
-        ))}
-      </div>
+  return (
+    <div
+      ref={carouselRef}
+      className={`flex py-2 ${
+        reverse ? "animate-reverseSkillCardSlide" : "animate-skillCardSlide"
+      }`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {skillDataList.map((skillData, index) => (
+        <Image
+          key={index}
+          className="rounded-3xl px-2 hover:cursor-pointer hover:opacity-50"
+          src={skillData.image}
+          alt={skillData.skillName}
+          width={150}
+          height={150}
+          onLoad={handleImageLoad}
+          onClick={() => handleImageClick(skillData)}
+        />
+      ))}
+
+      {/* 무한 순환을 위한 추가 데이터 */}
+      {skillDataList.map((skillData, index) => (
+        <Image
+          // key가 겹치면 슬라이더가 정상 작동하지 않기 때문에 겹치지 않도록 함
+          key={index + skillDataList.length}
+          className="rounded-3xl px-2 hover:cursor-pointer hover:opacity-50"
+          src={skillData.image}
+          alt={skillData.skillName}
+          width={150}
+          height={150}
+          onLoad={handleImageLoad}
+          onClick={() => handleImageClick(skillData)}
+        />
+      ))}
     </div>
   );
 }

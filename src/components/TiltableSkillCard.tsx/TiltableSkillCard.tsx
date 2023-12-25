@@ -4,18 +4,13 @@ import Image from "next/image";
 import style from "./TiltableSkillCard.module.css";
 
 import React, { useRef } from "react";
+import { useZustandStore } from "@/zustand/useZustandStore";
 
 export default function TiltableSkillCard() {
   const containerRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  const skillData = {
-    image: "/skillIcons/TypeScript.svg",
-    alt: "TypeScript, 클릭하여 기술 상세 보기",
-    category: "lang",
-    skillName: "TypeScript",
-    description: "타입을 적절하게 활용해서 안정적인 개발이 가능합니다",
-  };
+  const { selectedSkill: skillData } = useZustandStore();
 
   const handleMouseMove = (e: React.PointerEvent) => {
     // 카드에 마우스 오버로 이동 시, 마우스의 위치에 영향을 받아 움직이는 선형 그라데이션 광택 효과를 구현
@@ -107,7 +102,9 @@ export default function TiltableSkillCard() {
 
         {/* 카드 내부의 기술 상세 텍스트 */}
         <div className="px-4 flex flex-col justify-center items-center mt-6">
-          <p className="text-2xl font-bold text-black">{skillData.skillName}</p>
+          <p className="text-2xl font-bold whitespace-nowrap text-black">
+            {skillData.skillName}
+          </p>
 
           {/* 제목과 상세내용 사이의 구분선 */}
           <div className="relative w-44 h-1 border-b-2 border-gray-300 mt-6 mb-4">
