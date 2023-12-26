@@ -9,7 +9,7 @@ export async function sendContactMail(form: EmailForm) {
     if (!formSchema.isValidSync(form)) {
       throw new Error("보내실 이메일 양식을 다시 확인해주세요");
     }
-    const response = await fetch("/api/send-email", {
+    const response = await fetch("/api/send-mail", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
