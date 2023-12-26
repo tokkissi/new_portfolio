@@ -15,3 +15,9 @@ export type SkillData = {
   skillName: string;
   description: string;
 };
+
+export type EmailForm = {
+  from: string;
+  name: string;
+  message: string;
+};
