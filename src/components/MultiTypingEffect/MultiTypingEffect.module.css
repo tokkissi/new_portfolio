@@ -1,0 +1,22 @@
+.typingEffect {
+  white-space: pre-wrap; /* 개행 문자(줄바꿈.엔터)를 인식하고 자동 줄바꿈 처리 */
+}
+
+/* 마지막 텍스트 옆에서 깜박이는 커서 */
+/* step-end를 사용하여 커서 색이 점차 변하지 않게, 한번에 변해서 깜박이는 효과를 구현함 */
+.cursor {
+  border-right-width: 0.2rem;
+  border-right-style: solid;
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+/* 커서가 투명해졌다 흰색이 됐다를 반복함. 내 프로젝트 배경이 검정이므로 커서 색을 흰색으로 설정 */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
+}
