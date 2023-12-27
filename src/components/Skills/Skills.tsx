@@ -10,13 +10,7 @@ export default function Skills() {
         <h2 className="mr-16 leading-none">Skills</h2>
         <SkillToggleButton />
       </div>
-
       <SkillCardGallery />
-
-      <div className="mt-28 mb-10">
-        <SkillCardSlider />
-        <SkillCardSlider reverse />
-      </div>
     </section>
   );
 }
