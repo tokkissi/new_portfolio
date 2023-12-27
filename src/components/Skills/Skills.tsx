@@ -1,6 +1,7 @@
 import TiltableSkillCard from "../TiltableSkillCard/TiltableSkillCard";
 import SkillCardSlider from "../SkillCardSlider/SkillCardSlider";
 import SkillToggleButton from "../SkillToggleButton/SkillToggleButton";
+import SkillCardGallery from "../SkillCardGallery";
 
 export default function Skills() {
   return (
@@ -9,9 +10,9 @@ export default function Skills() {
         <h2 className="mr-16 leading-none">Skills</h2>
         <SkillToggleButton />
       </div>
-      <div className="flex justify-center">
-        <TiltableSkillCard />
-      </div>
+
+      <SkillCardGallery />
+
       <div className="mt-28 mb-10">
         <SkillCardSlider />
         <SkillCardSlider reverse />
