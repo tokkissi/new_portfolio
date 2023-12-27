@@ -13,32 +13,56 @@ type TiltableSkillCardProps = {
 export default function TiltableSkillCard({ data }: TiltableSkillCardProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
+  const darkOverlayRef = useRef<HTMLDivElement>(null);
 
   const { selectedSkill } = useZustandStore();
 
   const skillData = data || selectedSkill;
+  const isSpread = data ? true : false;
 
+  // 포인터 이벤트는 마우스 이벤트의 기능을 모두 가지고 있음. 또한 마우스 뿐 아니라 모바일과 터치스크린 등의 입력에도 동작함. 그러므로 되도록 모바일에도 지원이 가능한 포인터 이벤트를 사용할 것
   const handleMouseMove = (e: React.PointerEvent) => {
     // 카드에 마우스 오버로 이동 시, 마우스의 위치에 영향을 받아 움직이는 선형 그라데이션 광택 효과를 구현
-    if (containerRef.current && overlayRef.current) {
+    if (containerRef.current && overlayRef.current && darkOverlayRef.current) {
       const { offsetX, offsetY } = e.nativeEvent;
       const rotateY = (5 / 36) * offsetX - 20;
       const rotateX = (5 / 48) * offsetY - 20;
 
+      // 원근감과을 추가하고, 마우스 위치에 영향을 받아 회전하도록 함
       containerRef.current.style.transform = `perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
 
-      overlayRef.current.style.backgroundPosition = `${
-        offsetX / 5 + offsetY / 5
-      }%`;
+      if (!isSpread) {
+        // 오버레이에 그려진 선형 그라데이션 광택의 위치를 마우스 위치에 영향을 받아 이동시키도록 함
+        overlayRef.current.style.backgroundPosition = `${
+          offsetX / 5 + offsetY / 5
+        }%`;
+      }
 
-      overlayRef.current.style.filter = "opacity(0.8)";
+      if (isSpread) {
+        // radial-gradient의 중심 위치 계산
+        const backgroundPosX =
+          (offsetX / containerRef.current.offsetWidth) * 100;
+        const backgroundPosY =
+          (offsetY / containerRef.current.offsetHeight) * 100;
+
+        // 다크오버레이 위에서 퍼센트로 계산된 마우스 위치를 (x%, y% 는 위치) 중심으로 원모양의 큰 크기(farthest-side 설정값)의 원형 그라데이션을 오버레이 상에 그리고, 그라데이션 색상을 지정함. [색상 해당색상의 %위치]로 지정하여 디테일하게 위치별 색상 그라데이션이 가능함
+        darkOverlayRef.current.style.background = `radial-gradient(circle farthest-side at ${backgroundPosX}% ${backgroundPosY}%, transparent 0%, rgba(170, 170, 170, 1) 80%, rgba(82, 82, 82, 1) 100%)`;
+      }
+
+      // mouseOut 으로 투명해진 오버레이를 다시 보이도록 함
+      // filter속성의 opacity임. 기본 opacity가 아님. 자식 속성까지 다 영향을 주는게 기본 opacity고, filter의 opacity는 자식을 제외한 해당 요소의 투명도에만 영향을 줌
+      overlayRef.current.style.filter = isSpread
+        ? "opacity(0)"
+        : "opacity(0.8)";
     }
   };
 
   const handleMouseOut = (e: React.MouseEvent) => {
-    // 마우스가 카드에서 나가면 오버레이에 적용한 광택을 보이지 않게 하고, 카드 회전을 초기화함
-    if (containerRef.current && overlayRef.current) {
+    // 마우스가 카드에서 나가면 오버레이에 적용한 광택을 보이지 않게 하고, 다크오버레이의 그라데이션도 새로 초기화하고, 카드 회전을 초기화함
+    if (containerRef.current && overlayRef.current && darkOverlayRef.current) {
       overlayRef.current.style.filter = "opacity(0)";
+      darkOverlayRef.current.style.background =
+        "linear-gradient(150deg, rgba(55, 55, 55, 1) 0%, rgba(82, 82, 82, 1) 100%)";
       containerRef.current.style.transform =
         "perspective(350px) rotateX(0deg) rotateY(0deg)";
     }
@@ -51,8 +75,24 @@ export default function TiltableSkillCard({ data }: TiltableSkillCardProps) {
       onPointerMove={handleMouseMove}
       onMouseOut={handleMouseOut}
     >
-      {/* 광택 효과를 주기 위한 레이아웃 */}
-      <div ref={overlayRef} className={style.overlay}></div>
+      <div
+        ref={overlayRef}
+        className={style.overlay}
+        style={
+          isSpread
+            ? {
+                filter: "opacity(0)",
+              }
+            : { filter: "opacity(0.8)" }
+        }
+      ></div>
+
+      <div
+        ref={darkOverlayRef}
+        className={`${style.darkOverlay} ${
+          isSpread ? "opacity-90" : "opacity-0"
+        }`}
+      ></div>
 
       {/* 카드 내부 이미지 및 텍스트 컨테이너 */}
       <div
@@ -93,8 +133,11 @@ export default function TiltableSkillCard({ data }: TiltableSkillCardProps) {
         <div
           className="p-2 mt-16 rounded-full"
           style={{
-            background:
-              "linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)",
+            background: `${
+              isSpread
+                ? "linear-gradient(to right, #2CD3E1, #A459D1, #F266AB, #FFB84C)"
+                : "linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)"
+            }`,
           }}
         >
           <Image
