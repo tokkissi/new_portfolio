@@ -2,15 +2,21 @@
 
 import Image from "next/image";
 import style from "./TiltableSkillCard.module.css";
-
 import React, { useRef } from "react";
 import { useZustandStore } from "@/zustand/useZustandStore";
+import { SkillData } from "@/model/types";
 
-export default function TiltableSkillCard() {
+type TiltableSkillCardProps = {
+  data?: SkillData;
+};
+
+export default function TiltableSkillCard({ data }: TiltableSkillCardProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  const { selectedSkill: skillData } = useZustandStore();
+  const { selectedSkill } = useZustandStore();
+
+  const skillData = data || selectedSkill;
 
   const handleMouseMove = (e: React.PointerEvent) => {
     // 카드에 마우스 오버로 이동 시, 마우스의 위치에 영향을 받아 움직이는 선형 그라데이션 광택 효과를 구현
