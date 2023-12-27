@@ -7,7 +7,7 @@ export default function SkillCardFoldView() {
       <div className="flex justify-center">
         <TiltableSkillCard />
       </div>
-      <div className="mt-28 mb-10">
+      <div className="mt-28 mb-10 -mx-8 overflow-hidden">
         <SkillCardSlider />
         <SkillCardSlider reverse />
       </div>

@@ -5,6 +5,7 @@ import style from "./TiltableSkillCard.module.css";
 import React, { useRef } from "react";
 import { useZustandStore } from "@/zustand/useZustandStore";
 import { SkillData } from "@/model/types";
+import { scrollToSkills } from "@/utils/scrollUtils";
 
 type TiltableSkillCardProps = {
   data?: SkillData;
@@ -15,7 +16,8 @@ export default function TiltableSkillCard({ data }: TiltableSkillCardProps) {
   const overlayRef = useRef<HTMLDivElement>(null);
   const darkOverlayRef = useRef<HTMLDivElement>(null);
 
-  const { selectedSkill } = useZustandStore();
+  const { selectedSkill, setSelectedSkill, toggleSkillCardFold } =
+    useZustandStore();
 
   const skillData = data || selectedSkill;
   const isSpread = data ? true : false;
@@ -68,12 +70,22 @@ export default function TiltableSkillCard({ data }: TiltableSkillCardProps) {
     }
   };
 
+  const handleClickCard = () => {
+    if (!isSpread) {
+      return;
+    }
+    setSelectedSkill(skillData);
+    toggleSkillCardFold();
+    scrollToSkills();
+  };
+
   return (
     <div
       ref={containerRef}
-      className={`${style.container}`}
+      className={`${style.container} ${isSpread ? "hover:cursor-pointer" : ""}`}
       onPointerMove={handleMouseMove}
       onMouseOut={handleMouseOut}
+      onClick={handleClickCard}
     >
       <div
         ref={overlayRef}
