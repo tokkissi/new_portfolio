@@ -6,6 +6,7 @@ export default function Landing() {
     <section
       className="relative w-full max-w-[120rem] h-screen flex justify-center items-center"
       style={{ clipPath: "inset(0 0 0 0)" }}
+      id="landing"
     >
       <div className="fixed w-full h-full left-0 top-0">
         <Image

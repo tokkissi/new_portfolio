@@ -6,7 +6,7 @@ const contactText = `궁금한 것이 있거나 협업을 원하시면 주저하
 
 export default function Contact() {
   return (
-    <section className="flex items-center h-screen">
+    <section className="flex items-center h-screen" id="contact">
       <div className="w-full h-fit flex">
         <div className="basis-[15%]"></div>
 

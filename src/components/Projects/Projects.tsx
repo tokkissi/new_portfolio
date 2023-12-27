@@ -5,9 +5,12 @@ import { mainProjectsData, personalSideProjectsData } from "./projectsData";
 
 export default function Projects() {
   return (
-    <section className="flex flex-col justify-center">
+    <section
+      className="flex flex-col justify-center scroll-mt-12"
+      id="projects"
+    >
       {/* mt-12는 네비게이션바의 높이. h2가 가려지지 않도록 설정함 */}
-      <h2 className="mt-12 mb-6">Projects</h2>
+      <h2 className="mb-6 leading-none">Projects</h2>
       {/* 데이터 가져와서 map 으로 그리기.map의 index를 사용해서 index % 2 ? RightProjectCard : LeftProjectCard 로 그리기 */}
       {mainProjectsData.map((project, index) => (
         <ProjectCard

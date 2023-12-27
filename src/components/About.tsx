@@ -16,7 +16,7 @@ zustand, yup`,
 
 export default function About() {
   return (
-    <section className="flex items-center h-screen">
+    <section className="flex items-center h-screen scroll-mt-12" id="about">
       <div className="w-full min-h-[33rem] flex">
         <div className="basis-[15%]"></div>
 

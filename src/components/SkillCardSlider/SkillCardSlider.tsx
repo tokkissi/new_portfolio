@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { skillDataList } from "../Skills/skillsData";
 import { useZustandStore } from "@/zustand/useZustandStore";
 import { SkillData } from "@/model/types";
-import { scrollToSkills } from "@/utils/scrollUtils";
+import { scrollToElementById } from "@/utils/utils";
 
 type SkillCardSliderProps = {
   reverse?: boolean;
@@ -68,7 +68,7 @@ export default function SkillCardSlider({
 
   const handleImageClick = (data: SkillData) => {
     setSelectedSkill(data);
-    scrollToSkills();
+    scrollToElementById("skills");
   };
 
   return (

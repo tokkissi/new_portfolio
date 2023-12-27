@@ -5,7 +5,7 @@ import style from "./TiltableSkillCard.module.css";
 import React, { useRef } from "react";
 import { useZustandStore } from "@/zustand/useZustandStore";
 import { SkillData } from "@/model/types";
-import { scrollToSkills } from "@/utils/scrollUtils";
+import { scrollToElementById } from "@/utils/utils";
 
 type TiltableSkillCardProps = {
   data?: SkillData;
@@ -76,7 +76,7 @@ export default function TiltableSkillCard({ data }: TiltableSkillCardProps) {
     }
     setSelectedSkill(skillData);
     toggleSkillCardFold();
-    scrollToSkills();
+    scrollToElementById("skills");
   };
 
   return (
