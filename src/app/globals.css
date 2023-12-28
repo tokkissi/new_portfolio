@@ -3,17 +3,37 @@
 @tailwind utilities;
 
 h2 {
-  font-size: 4rem;
+  font-size: 2rem;
   font-weight: 800;
 }
 
 section {
   width: 100%;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  max-width: 120rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-strong {
-  color: rgb(254 240 138);
+@media screen and (min-width: 450px) {
+  h2 {
+    font-size: 4rem;
+    font-weight: 800;
+  }
+
+  section {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  h2 {
+    font-size: 4rem;
+    font-weight: 800;
+  }
+
+  section {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: 120rem;
+  }
 }
