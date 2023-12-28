@@ -5,6 +5,6 @@ export function splitStringIntoArray(str: string): string[] {
 export function scrollToElementById(id: string) {
   const targetElement = document.getElementById(id);
   if (targetElement) {
-    targetElement.scrollIntoView({ behavior: "smooth" });
+    targetElement.scrollIntoView();
   }
 }
