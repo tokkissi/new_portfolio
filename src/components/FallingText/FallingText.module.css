@@ -11,7 +11,7 @@
   top: 50%;
   left: 50%;
   text-align: center;
-  font-size: 10rem;
+  font-size: 3rem;
   font-weight: 800;
   text-wrap: nowrap;
 }
@@ -21,6 +21,34 @@
   position: relative;
   transform: translateY(-100vh);
   animation: fall 3.5s forwards;
+}
+
+@media screen and (min-width: 450px) {
+  .fallingTextContainer {
+    text-shadow: 0.2rem 0.2rem grey;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    font-size: 4rem;
+    font-weight: 800;
+    text-wrap: nowrap;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .fallingTextContainer {
+    text-shadow: 0.2rem 0.2rem grey;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    font-size: 10rem;
+    font-weight: 800;
+    text-wrap: nowrap;
+  }
 }
 
 .fallingTextContainer span:nth-child(2) {

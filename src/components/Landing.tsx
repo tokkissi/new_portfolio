@@ -4,13 +4,13 @@ import FallingText from "./FallingText/FallingText";
 export default function Landing() {
   return (
     <section
-      className="relative w-full max-w-[120rem] h-screen flex justify-center items-center"
+      className="relative w-full max-w-[120rem] h-screen flex justify-center items-center overflow-hidden"
       style={{ clipPath: "inset(0 0 0 0)" }}
       id="landing"
     >
       <div className="fixed w-full h-full left-0 top-0">
         <Image
-          className="fixed object-cover"
+          className="fixed"
           src="/bg-code.gif"
           alt="background coding image"
           fill
