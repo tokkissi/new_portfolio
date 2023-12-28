@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 type DeviceType = "mobile" | "tablet" | "desktop";
 
 export default function useDeviceType() {
-  const [deviceTpye, setDeviceType] = useState<DeviceType>("desktop");
+  const [deviceType, setDeviceType] = useState<DeviceType>("desktop");
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
@@ -22,5 +22,5 @@ export default function useDeviceType() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  return deviceTpye;
+  return deviceType;
 }
