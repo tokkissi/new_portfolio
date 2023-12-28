@@ -8,9 +8,9 @@ export default function useDeviceType() {
     const handleResize = () => {
       const width = window.innerWidth;
 
-      if (width < 640) {
+      if (width < 450) {
         setDeviceType("mobile");
-      } else if (width >= 640 && width < 1024) {
+      } else if (width >= 450 && width < 1024) {
         setDeviceType("tablet");
       } else {
         setDeviceType("desktop");
