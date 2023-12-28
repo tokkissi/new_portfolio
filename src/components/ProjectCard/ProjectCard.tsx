@@ -43,16 +43,16 @@ export default function ProjectCard({
           <h3 className="text-4xl font-extrabold mb-8">{projectName}</h3>
           <p className="text-2xl">{description}</p>
           <p className="text-lg mt-4 opacity-75">My work: {myWork}</p>
-        </div>
-        <div className="h-1/2 flex flex-col">
-          <div className="h-1/6"></div>
-          <div className="flex flex-wrap gap-x-8 gap-y-1 font-bold">
+          <div className="flex flex-wrap gap-x-8 gap-y-1 mt-6 font-bold">
             {techArray.map((tech, index) => (
-              <span className="text-2xl text-nowrap opacity-50" key={index}>
+              <span className="text-lg text-nowrap opacity-50" key={index}>
                 {tech}
               </span>
             ))}
           </div>
+        </div>
+        <div className="h-1/2 flex flex-col">
+          <div className="h-1/6"></div>
           <ProjectLinkBox
             deploymentUrl={deploymentUrl}
             githubCodeUrl={githubCodeUrl}
