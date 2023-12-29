@@ -1,6 +1,5 @@
 import { splitStringIntoArray } from "@/utils/utils";
 import Image from "next/image";
-import Link from "next/link";
 import { useMemo } from "react";
 import ProjectLinkBox from "../ProjectLinkBox";
 import { ProjectsData } from "@/model/types";
@@ -31,15 +30,14 @@ export default function ProjectCard({
           className={`${style.projectImage}`}
           src={imageUrl}
           alt={projectName}
-          // width={900}
-          // height={500}
           layout="fill"
           objectFit="cover"
         />
       </div>
 
-      {/* 프로젝트 디테일 텍스트 영역 */}
+      <div className={`${style.midgap}`}></div>
 
+      {/* 프로젝트 디테일 텍스트 영역 */}
       <div className={`${style.textWrapper}`}>
         <div>
           <h3 className={`${style.projectName}`}>{projectName}</h3>
