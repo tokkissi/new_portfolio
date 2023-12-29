@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { useZustandStore } from "@/zustand/useZustandStore";
+import style from "./SkillToggleButton.module.css";
+import useDeviceType from "@/app/hooks/useDeviceType";
 
 export default function SkillToggleButton() {
   const { isSkillCardFolded, toggleSkillCardFold } = useZustandStore();
@@ -12,35 +13,30 @@ export default function SkillToggleButton() {
   };
   return (
     <div
-      className={`${
-        isSkillCardFolded ? `day` : `night`
-      } relative w-36 h-16 rounded-full cursor-pointer`}
-      style={{
-        boxShadow: "inset 0 2px 4px 0 #45474B",
-      }}
+      className={`${style.container}  ${isSkillCardFolded ? `day` : `night`}`}
       onClick={toggle}
     >
       <Image
-        className={`${
+        className={`${style.dayImage} ${
           isSkillCardFolded ? "opacity-100" : "opacity-0"
-        } transition-opacity duration-500 absolute -z-10`}
+        }`}
         src="/day.svg"
         alt="카드 접기"
-        width={150}
-        height={150}
+        width={100}
+        height={100}
       />
       <Image
-        className={`${
+        className={`${style.nightImage} ${
           isSkillCardFolded ? "opacity-0" : "opacity-100"
-        } transition-opacity duration-500 absolute -z-10`}
+        }`}
         src="/night.svg"
         alt="카드 펼치기"
-        width={150}
-        height={150}
+        width={100}
+        height={100}
       />
       <div
-        className={`absolute w-14 h-14 rounded-full top-[5px] transition-all duration-500 ${
-          isSkillCardFolded ? "left-1" : "translate-x-[84px]"
+        className={`${style.circle} ${
+          isSkillCardFolded ? "left-1" : "translate-x-[48px]"
         } bg-gradient-to-br ${
           isSkillCardFolded
             ? "from-yellow-300 to-white"

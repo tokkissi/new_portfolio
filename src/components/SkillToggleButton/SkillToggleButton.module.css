@@ -1,0 +1,33 @@
+.container {
+  /* box-shadow: inset 0 2px 4px 0 #45474b; */
+  position: relative;
+  border-radius: 9999px;
+  cursor: pointer;
+
+  width: 5rem;
+  height: 2rem;
+}
+
+.circle,
+.dayImage,
+.nightImage {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-duration: 500ms;
+  position: absolute;
+}
+
+.circle {
+  border-radius: 9999px;
+  transition-property: all;
+
+  width: 1.8rem;
+  height: 1.8rem;
+  top: 3.8px;
+}
+
+.dayImage,
+.nightImage {
+  transition-property: opacity;
+  z-index: -10;
+}
