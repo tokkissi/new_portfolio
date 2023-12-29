@@ -1,6 +1,5 @@
+import { DeviceType } from "@/model/types";
 import { useEffect, useState } from "react";
-
-type DeviceType = "mobile" | "tablet" | "desktop";
 
 export default function useDeviceType() {
   const [deviceType, setDeviceType] = useState<DeviceType>("desktop");

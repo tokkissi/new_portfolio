@@ -21,3 +21,5 @@ export type EmailForm = {
   name: string;
   message: string;
 };
+
+export type DeviceType = "mobile" | "tablet" | "desktop";
