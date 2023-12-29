@@ -30,8 +30,7 @@ export default function ProjectCard({
           className={`${style.projectImage}`}
           src={imageUrl}
           alt={projectName}
-          layout="fill"
-          objectFit="cover"
+          fill
         />
       </div>
 
