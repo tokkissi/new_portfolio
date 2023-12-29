@@ -4,7 +4,7 @@ import style from "./SkillcardSpreadView.module.css";
 
 export default function SkillcardSpreadView() {
   return (
-    <div className="flex gap-16 flex-wrap justify-center">
+    <div className="flex gap-16 flex-wrap justify-center mb-12">
       {skillDataList.map((skillData, index) => (
         <div
           className={style.fadeInAnimation}

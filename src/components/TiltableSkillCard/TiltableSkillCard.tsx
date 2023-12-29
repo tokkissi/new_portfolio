@@ -23,7 +23,7 @@ export default function TiltableSkillCard({ data }: TiltableSkillCardProps) {
   const isSpread = data ? true : false;
 
   // 포인터 이벤트는 마우스 이벤트의 기능을 모두 가지고 있음. 또한 마우스 뿐 아니라 모바일과 터치스크린 등의 입력에도 동작함. 그러므로 되도록 모바일에도 지원이 가능한 포인터 이벤트를 사용할 것
-  const handleMouseMove = (e: React.PointerEvent) => {
+  const handlePointerMove = (e: React.PointerEvent) => {
     // 카드에 마우스 오버로 이동 시, 마우스의 위치에 영향을 받아 움직이는 선형 그라데이션 광택 효과를 구현
     if (containerRef.current && overlayRef.current && darkOverlayRef.current) {
       const { offsetX, offsetY } = e.nativeEvent;
@@ -51,7 +51,7 @@ export default function TiltableSkillCard({ data }: TiltableSkillCardProps) {
         darkOverlayRef.current.style.background = `radial-gradient(circle farthest-side at ${backgroundPosX}% ${backgroundPosY}%, transparent 0%, rgba(170, 170, 170, 1) 80%, rgba(82, 82, 82, 1) 100%)`;
       }
 
-      // mouseOut 으로 투명해진 오버레이를 다시 보이도록 함
+      // pointerOut 으로 투명해진 오버레이를 다시 보이도록 함
       // filter속성의 opacity임. 기본 opacity가 아님. 자식 속성까지 다 영향을 주는게 기본 opacity고, filter의 opacity는 자식을 제외한 해당 요소의 투명도에만 영향을 줌
       overlayRef.current.style.filter = isSpread
         ? "opacity(0)"
@@ -59,7 +59,7 @@ export default function TiltableSkillCard({ data }: TiltableSkillCardProps) {
     }
   };
 
-  const handleMouseOut = (e: React.MouseEvent) => {
+  const handlePointOut = (e: React.PointerEvent) => {
     // 마우스가 카드에서 나가면 오버레이에 적용한 광택을 보이지 않게 하고, 다크오버레이의 그라데이션도 새로 초기화하고, 카드 회전을 초기화함
     if (containerRef.current && overlayRef.current && darkOverlayRef.current) {
       overlayRef.current.style.filter = "opacity(0)";
@@ -83,8 +83,8 @@ export default function TiltableSkillCard({ data }: TiltableSkillCardProps) {
     <div
       ref={containerRef}
       className={`${style.container} ${isSpread ? "hover:cursor-pointer" : ""}`}
-      onPointerMove={handleMouseMove}
-      onMouseOut={handleMouseOut}
+      onPointerMove={handlePointerMove}
+      onPointerOut={handlePointOut}
       onClick={handleClickCard}
     >
       <div
