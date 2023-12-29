@@ -1,0 +1,67 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+  flex-direction: column;
+}
+
+.head2 {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+}
+
+.textWrapper {
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 12rem;
+}
+
+@media screen and (min-width: 450px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .head2 {
+    font-size: 6rem;
+    font-weight: 800;
+  }
+
+  .textWrapper {
+    width: 30rem;
+    min-height: 25rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: 120rem;
+  }
+
+  .head2 {
+    font-size: 8rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .textWrapper {
+    width: 40rem;
+    min-height: 33rem;
+  }
+
+  .imageWrapper {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .profileImg {
+    width: 15rem;
+    border-radius: 0.5rem;
+  }
+}

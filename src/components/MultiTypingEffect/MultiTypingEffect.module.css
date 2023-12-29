@@ -1,5 +1,7 @@
 .typingEffect {
   white-space: pre-wrap; /* 개행 문자(줄바꿈.엔터)를 인식하고 자동 줄바꿈 처리 */
+  font-size: 1rem;
+  line-height: 2rem;
 }
 
 /* 마지막 텍스트 옆에서 깜박이는 커서 */
@@ -18,5 +20,19 @@
   }
   50% {
     border-color: white;
+  }
+}
+
+@media screen and (min-width: 450px) {
+  .typingEffect {
+    font-size: 1.2rem;
+    line-height: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .typingEffect {
+    line-height: 3rem;
+    font-size: 1.3rem;
   }
 }

@@ -9,6 +9,7 @@ h2 {
 
 section {
   width: 100%;
+  scroll-margin-top: 3rem;
   padding-left: 1rem;
   padding-right: 1rem;
 }
