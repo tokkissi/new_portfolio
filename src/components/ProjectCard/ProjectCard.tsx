@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo } from "react";
 import ProjectLinkBox from "../ProjectLinkBox";
 import { ProjectsData } from "@/model/types";
+import style from "./ProjectCard.module.css";
 
 type ProjectCardProps = ProjectsData & {
   reverse: boolean;
@@ -23,40 +24,40 @@ export default function ProjectCard({
   const techArray = useMemo(() => splitStringIntoArray(techs), [techs]);
 
   return (
-    <div
-      className={`flex justify-center gap-16 mb-12 ${
-        reverse ? "flex-row-reverse" : ""
-      }`}
-    >
-      <div className="w-1/2 flex">
-        {!reverse && <div className="w-32"></div>}
+    <div className={`${style.container} ${reverse ? "flex-row-reverse" : ""}`}>
+      {/* 프로젝트 이미지 영역 */}
+      <div className={`${style.imageWrapper}`}>
         <Image
-          className="rounded-lg border-2 border-white"
+          className={`${style.projectImage}`}
           src={imageUrl}
           alt={projectName}
-          width={720}
-          height={800}
+          // width={900}
+          // height={500}
+          layout="fill"
+          objectFit="cover"
         />
       </div>
-      <div className={`pb-6 w-1/2 ${reverse ? "pl-32" : ""}`}>
-        <div className="h-1/2">
-          <h3 className="text-4xl font-extrabold mb-8">{projectName}</h3>
-          <p className="text-2xl">{description}</p>
-          <p className="text-lg mt-4 opacity-75">My work: {myWork}</p>
-          <div className="flex flex-wrap gap-x-8 gap-y-1 mt-6 font-bold">
+
+      {/* 프로젝트 디테일 텍스트 영역 */}
+
+      <div className={`${style.textWrapper}`}>
+        <div>
+          <h3 className={`${style.projectName}`}>{projectName}</h3>
+          <p className={`${style.projectDescription}`}>{description}</p>
+          <p className={style.myWork}>My work: {myWork}</p>
+          <div className={`${style.techbox}`}>
             {techArray.map((tech, index) => (
-              <span className="text-lg text-nowrap opacity-50" key={index}>
+              <span className={`${style.tech} `} key={index}>
                 {tech}
               </span>
             ))}
           </div>
-        </div>
-        <div className="h-1/2 flex flex-col">
-          <div className="h-1/6"></div>
-          <ProjectLinkBox
-            deploymentUrl={deploymentUrl}
-            githubCodeUrl={githubCodeUrl}
-          />
+          <div>
+            <ProjectLinkBox
+              deploymentUrl={deploymentUrl}
+              githubCodeUrl={githubCodeUrl}
+            />
+          </div>
         </div>
       </div>
     </div>

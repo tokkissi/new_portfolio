@@ -1,3 +1,7 @@
+"use client";
+
+import useDeviceType from "@/app/hooks/useDeviceType";
+import { DeviceType } from "@/model/types";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,18 +12,26 @@ type ProjectLinkBoxProps = {
   hasMyWork?: boolean;
 };
 
+function getIconSize(isCarousel: boolean, deviceType: DeviceType) {
+  if (isCarousel) {
+    return deviceType === "desktop" ? "30" : "24";
+  } else {
+    return deviceType === "desktop" ? "36" : "30";
+  }
+}
+
 export default function ProjectLinkBox({
   deploymentUrl,
   githubCodeUrl,
   isCarousel = false,
   hasMyWork = false,
 }: ProjectLinkBoxProps) {
+  const deviceType = useDeviceType();
+
   return (
     <div
-      className={`w-full flex items-end ${
-        isCarousel
-          ? `gap-10 h-fit justify-center ${hasMyWork ? "mt-1" : "mt-3"}`
-          : "gap-40 h-full mt-10"
+      className={`w-full flex justify-evenly ${
+        isCarousel ? `${hasMyWork ? "mt-1" : "mt-2"}` : "mt-4 mb-2"
       }`}
     >
       {githubCodeUrl && (
@@ -32,10 +44,10 @@ export default function ProjectLinkBox({
           <Image
             src="/skillIcons/Github-Light.svg"
             alt="프로젝트 깃허브 링크"
-            width={isCarousel ? "32" : "48"}
-            height={isCarousel ? "32" : "48"}
+            width={getIconSize(isCarousel, deviceType)}
+            height={getIconSize(isCarousel, deviceType)}
           />
-          <span className="text-2xl font-bold">Code</span>
+          <span className="text-lg font-bold">Code</span>
         </Link>
       )}
       {deploymentUrl && (
@@ -48,10 +60,10 @@ export default function ProjectLinkBox({
           <Image
             src="/external-link.svg"
             alt="프로젝트 배포 url 링크"
-            width={isCarousel ? "32" : "48"}
-            height={isCarousel ? "32" : "48"}
+            width={getIconSize(isCarousel, deviceType)}
+            height={getIconSize(isCarousel, deviceType)}
           />
-          <span className="text-2xl font-bold">Visit</span>
+          <span className="text-lg font-bold">Visit</span>
         </Link>
       )}
     </div>

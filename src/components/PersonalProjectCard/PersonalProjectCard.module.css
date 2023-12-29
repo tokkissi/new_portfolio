@@ -1,0 +1,47 @@
+.container {
+  font-size: 0.7rem;
+}
+
+.projectName {
+  font-size: 1rem;
+}
+
+.projectDescription {
+  margin-bottom: 0.2rem;
+}
+
+.tech,
+.mywork {
+  margin-right: auto;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 450px) {
+  .container {
+    font-size: 0.8rem;
+  }
+
+  .projectName {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .projectDescription {
+    margin-bottom: 0.3rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    font-size: 1rem;
+  }
+
+  .projectName {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  .projectDescription {
+    margin-bottom: 0.5rem;
+  }
+}
