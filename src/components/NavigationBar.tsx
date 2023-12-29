@@ -42,12 +42,14 @@ export default function NavigationBar() {
   };
 
   return (
-    <nav className="fixed h-12 flex items-center justify-between z-50 bg-black t-0 px-8 text-xl w-full  max-w-[120rem]">
+    <nav
+      className={`fixed h-12 flex items-center justify-between z-50 bg-black t-0 px-8 text-xl w-full  max-w-[120rem]`}
+    >
       <div className="w-full flex justify-between items-center">
         {/* 좌측 로고 */}
 
         <button
-          className="flex justify-center items-center hover:opacity-60"
+          className="flex shrink-0 w-9 h-9 justify-center items-center hover:opacity-60"
           onClick={() => handleClick("landing")}
         >
           <Image
@@ -60,7 +62,11 @@ export default function NavigationBar() {
 
         {/* 우측 네비게이션 */}
         {(deviceType === "tablet" || deviceType === "desktop") && (
-          <ul className="flex gap-8 font-bold">
+          <ul
+            className={`flex font-bold ${
+              deviceType === "tablet" ? "text-sm gap-4" : "gap-8"
+            }`}
+          >
             <li>
               <button
                 className="hover:opacity-60"
