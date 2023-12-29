@@ -121,6 +121,7 @@ export default function ContactEmailForm() {
               className="w-full bg-[#1C232A] py-1 mb-8 px-2 rounded-sm border-4 border-black/30 mt-2"
               onChange={handleName}
               value={form.name}
+              autoComplete="name"
             />
           </label>
 
