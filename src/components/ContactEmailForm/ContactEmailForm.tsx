@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { EmailForm } from "@/model/types";
-import EmailFeedbackBanner from "./EmailFeedbackBanner";
+import EmailFeedbackBanner from "../EmailFeedbackBanner";
 import { MoonLoader } from "react-spinners";
 import { sendContactMail } from "@/service/sendContactMail";
 import { FaPaperPlane } from "react-icons/fa";
+import useDeviceType from "@/app/hooks/useDeviceType";
+import style from "./ContactEmailForm.module.css";
 
 type SendResult = {
   state: "fail" | "success" | "";
@@ -26,6 +28,7 @@ export default function ContactEmailForm() {
     message: "",
   });
   const [showResult, setShowResult] = useState(false);
+  const deviceType = useDeviceType();
 
   const feedbackBannerStyle =
     "absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10";
@@ -85,8 +88,8 @@ export default function ContactEmailForm() {
   };
 
   return (
-    <div className="w-full h-full px-4 flex justify-center">
-      <div className={`w-full min-w-72 h-full relative`}>
+    <div className={`${style.container}`}>
+      <div className={`w-full h-full relative`}>
         {mailsending && (
           <div className={feedbackBannerStyle}>
             <MoonLoader color="#4f4a45" />
@@ -95,7 +98,7 @@ export default function ContactEmailForm() {
 
         <form
           onSubmit={handleSubmitForm}
-          className={`p-4 text-2xl ${
+          className={`${style.form} ${
             mailsending || (showResult && sendResult.state === "fail")
               ? "opacity-50 pointer-events-none"
               : ""
@@ -106,7 +109,7 @@ export default function ContactEmailForm() {
             <input
               id="from"
               type="text"
-              className="w-full bg-[#1C232A] py-1 mb-8 px-2 rounded-sm border-4  border-black/30 mt-2"
+              className={`${style.email}`}
               onChange={handleEmail}
               value={form.from}
               autoComplete="email"
@@ -118,7 +121,7 @@ export default function ContactEmailForm() {
             <input
               id="name"
               type="text"
-              className="w-full bg-[#1C232A] py-1 mb-8 px-2 rounded-sm border-4 border-black/30 mt-2"
+              className={`${style.name}`}
               onChange={handleName}
               value={form.name}
               autoComplete="name"
@@ -129,7 +132,7 @@ export default function ContactEmailForm() {
             MESSAGE
             <textarea
               id="message"
-              className="w-full bg-[#1C232A] py-1 resize-none px-2 rounded-sm border-4 border-black/30 mt-2"
+              className={`${style.message}`}
               rows={5}
               onChange={handleMessage}
               value={form.message}
@@ -137,7 +140,7 @@ export default function ContactEmailForm() {
           </label>
           <button
             type="submit"
-            className="py-2 px-4 rounded-sm w-fit font-semibold text-white border-2 border-white mt-8 flex items-center"
+            className="py-2 px-4 rounded-sm w-fit font-semibold text-white border-2 border-white mt-8 flex items-center hover:bg-white/20"
           >
             <span className="mr-4">Send Mail</span>
             <FaPaperPlane />

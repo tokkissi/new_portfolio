@@ -1,0 +1,42 @@
+.container {
+  max-width: 35rem;
+}
+
+.form {
+  font-size: 1.25rem;
+}
+
+.email,
+.name,
+.message {
+  width: 100%;
+  background-color: #1c232a;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.125rem;
+  border: 4px solid rgb(0 0 0 / 0.3);
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.email:focus,
+.name:focus,
+.message:focus {
+  outline: 2px solid white;
+  background: #33393f;
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
+
+  .form {
+    font-size: 1.5rem;
+  }
+
+  .email,
+  .name,
+  .message {
+    margin-bottom: 2rem;
+  }
+}
