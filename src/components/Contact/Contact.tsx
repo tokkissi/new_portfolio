@@ -1,4 +1,5 @@
 import ContactEmailForm from "../ContactEmailForm/ContactEmailForm";
+import SocialLinks from "../SocialLinks/SocialLinks";
 import style from "./Contact.module.css";
 
 const contactText = `궁금한 것이 있거나 협업을 원하시면 주저하지 말고
@@ -14,14 +15,13 @@ export default function Contact() {
         <div className={`${style.textWrapper}`}>
           <h2 className={`${style.head2}`}>Contact</h2>
           <div className={`${style.text}`}>{contactText}</div>
+          <SocialLinks />
         </div>
 
         {/* 우측 이메일 전송 폼 영역 */}
-        {/* <div className="flex justify-center items-center border-4 border-green-400"> */}
         <div className={`${style.mailbox}`}>
           <ContactEmailForm />
         </div>
-        {/* </div> */}
       </div>
     </section>
   );
