@@ -35,8 +35,7 @@ export default function About() {
   };
 
   return (
-    <section className={style.container}>
-      <div className="scroll-point h-12 w-full" id="about"></div>
+    <section className={`${style.container} scroll-point`} id="about">
       <div className={`w-full min-h-[28rem] flex justify-center`}>
         {/* 좌측 텍스트 영역 */}
         <div className={style.textWrapper}>
