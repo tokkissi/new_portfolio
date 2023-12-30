@@ -4,6 +4,7 @@ import Image from "next/image";
 import MultiTypingEffect from "../MultiTypingEffect/MultiTypingEffect";
 import useDeviceType from "@/app/hooks/useDeviceType";
 import style from "./About.module.css";
+import { useEffect, useState } from "react";
 
 const aboutTexts = [
   `안녕하세요! 긍정적인 마인드를 가지고
@@ -19,6 +20,19 @@ nodemailer, react-icons, react-spinners, zustand, yup`,
 
 export default function About() {
   const deviceType = useDeviceType();
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsFlipped((prev) => !prev);
+    }, 3000);
+
+    return () => clearTimeout(interval);
+  }, [isFlipped]);
+
+  const handleImageClick = () => {
+    setIsFlipped(!isFlipped);
+  };
 
   return (
     <section className={style.container}>
@@ -34,14 +48,27 @@ export default function About() {
 
         {/* 우측 사진 영역 */}
         {deviceType === "desktop" && (
-          <div className={style.imageWrapper}>
-            <Image
-              className={`${style.profileImg}`}
-              src="/김제원_프로필_사진.jpg"
-              alt="김제원 프로필 사진"
-              width={320}
-              height={320}
-            />
+          <div className={style.imageWrapper} onClick={handleImageClick}>
+            <div
+              className={`${style.flipCard} ${isFlipped ? style.flipped : ""}`}
+            >
+              <div className={`${style.front}`}>
+                <Image
+                  className={`${style.profileImg}`}
+                  src="/김제원_프로필_사진.jpg"
+                  alt="김제원 프로필 사진"
+                  fill
+                />
+              </div>
+              <div className={`${style.back}`}>
+                <Image
+                  className={`${style.profileImg}`}
+                  src="/토끼씨_프로필.jpg"
+                  alt="김제원 개인 캐릭터 토끼씨 이미지"
+                  fill
+                />
+              </div>
+            </div>
           </div>
         )}
       </div>
